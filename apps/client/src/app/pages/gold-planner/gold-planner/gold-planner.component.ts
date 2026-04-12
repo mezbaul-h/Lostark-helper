@@ -24,7 +24,11 @@ interface chestsData {
     takingGold: boolean,
     indeterminateTakingGold: boolean,
     canRunHM: boolean,
-    canRunSolo: boolean,
+    canRunNightmare: boolean,
+    soloModeExists: boolean,
+    normalModeExists: boolean,
+    hardModeExists: boolean,
+    nightmareModeExists: boolean,
     unboundGoldReward: number,
     boundGoldReward: number,
     chestPrice: number,
@@ -46,8 +50,8 @@ interface GoldPlannerDisplay {
   other: Record<string, number>;
   tracking: Record<string, boolean>;
   raidModesForGoldPlanner: Record<string, string>;
-  total: { unboundGold: number, boundGold: number}[];
-  grandTotal: { unboundGold: number, boundGold: number};
+  total: { unboundGold: number, boundGold: number }[];
+  grandTotal: { unboundGold: number, boundGold: number };
   plannerLines: PlannerLine[]
 }
 
@@ -149,13 +153,22 @@ export class GoldPlannerComponent {
               })
             }
 
-            // Used to activate/deactivate the Hard option on the mode selection radio 
+            // Used to activate/deactivate the Hard and Nightmare options on the mode selection radio 
             let canRunHM
             if (line.gate) {
               canRunHM = this.canRunHardModeForGateAndCharacter(line.gate, character)
             } else {
               canRunHM = line.gTask.gates.every(gate => {
                 return this.canRunHardModeForGateAndCharacter(gate, character)
+              })
+            }
+
+            let canRunNightmare
+            if (line.gate) {
+              canRunNightmare = this.canRunNightmareModeForGateAndCharacter(line.gate, character)
+            } else {
+              canRunNightmare = line.gTask.gates.every(gate => {
+                return this.canRunNightmareModeForGateAndCharacter(gate, character)
               })
             }
 
@@ -236,7 +249,11 @@ export class GoldPlannerComponent {
               takingGold,
               indeterminateTakingGold,
               canRunHM,
-              canRunSolo: line.gTask.gates[0].modes.find(mode => mode.name === 'Solo') !== undefined,
+              canRunNightmare,
+              soloModeExists: line.gTask.gates[0].modes.find(mode => mode.name === 'Solo') !== undefined,
+              normalModeExists: line.gTask.gates[0].modes.find(mode => mode.name === 'NM') !== undefined,
+              hardModeExists: line.gTask.gates[0].modes.find(mode => mode.name === 'HM') !== undefined,
+              nightmareModeExists: line.gTask.gates[0].modes.find(mode => mode.name === 'Nightmare') !== undefined,
               unboundGoldReward,
               boundGoldReward,
               chestPrice
@@ -286,7 +303,7 @@ export class GoldPlannerComponent {
             }
           });
           return acc;
-        }, new Array(roster.length).fill(undefined).map(u => {return { unboundGold: 0, boundGold: 0}}));
+        }, new Array(roster.length).fill(undefined).map(u => { return { unboundGold: 0, boundGold: 0 } }));
 
       roster.forEach((char, i) => {
         total[i].unboundGold += chaos[char.name];
@@ -297,7 +314,7 @@ export class GoldPlannerComponent {
         acc.unboundGold += v.unboundGold
         acc.boundGold += v.boundGold
         return acc
-      }, { unboundGold: 0, boundGold: 0})
+      }, { unboundGold: 0, boundGold: 0 })
 
       if (grandTotal.boundGold < 0) {
         grandTotal.unboundGold += grandTotal.boundGold
@@ -341,6 +358,15 @@ export class GoldPlannerComponent {
     const nmMode = gate.modes.find(mode => mode.name === 'NM')
     if (nmMode && nmMode.HMThreashold) {
       return nmMode.HMThreashold <= character.ilvl
+    } else {
+      return true
+    }
+  }
+
+  private canRunNightmareModeForGateAndCharacter(gate: Gate, character: Character): boolean {
+    const hmMode = gate.modes.find(mode => mode.name === 'HM')
+    if (hmMode && hmMode.NightmareThreashold) {
+      return hmMode.NightmareThreashold <= character.ilvl
     } else {
       return true
     }

@@ -36,7 +36,7 @@
             <thead>
               <tr>
                 <th nzLeft nzWidth="180px">Source</th>
-                <th nzWidth="300px" *ngFor="let character of roster">
+                <th nzWidth="400px" *ngFor="let character of roster">
                   {{ character.name }}[{{ character.ilvl }}] <i nz-icon nzType="message" nzTheme="outline" *ngIf="character.note" nz-tooltip [nzTooltipTitle]="character.note" class="note-icon"></i>
                 </th>
               </tr>
@@ -69,9 +69,10 @@
                           nzButtonStyle="solid"
                           (ngModelChange)="setRunningModeFlag(settings.$key, display.raidModesForGoldPlanner, row.line, roster[i], $event)"
                         >
-                          <label nz-radio-button nzValue="Solo" [nzDisabled]="!flag.canRunSolo">Solo</label>
-                          <label nz-radio-button nzValue="NM">Normal</label>
-                          <label nz-radio-button nzValue="HM" [nzDisabled]="!flag.canRunHM">Hard</label>
+                          <label *ngIf="flag.soloModeExists" nz-radio-button nzValue="Solo">Solo</label>
+                          <label *ngIf="flag.normalModeExists" nz-radio-button nzValue="NM">Normal</label>
+                          <label *ngIf="flag.hardModeExists" nz-radio-button nzValue="HM" [nzDisabled]="!flag.canRunHM">Hard</label>
+                          <label *ngIf="flag.nightmareModeExists" nz-radio-button nzValue="Nightmare" [nzDisabled]="!flag.canRunNightmare">Nightmare</label>
                           <label nz-radio-button nzValue="Mixed" [nzDisabled]="true">Mixed</label>
                         </nz-radio-group>
                         <div class="gold-checkbox-container">

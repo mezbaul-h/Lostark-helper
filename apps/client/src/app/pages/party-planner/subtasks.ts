@@ -105,4 +105,9 @@ export const subtasks: Subtask[] = [
   //Kazeros Difficulties
   { id: `kazeros-normal`, name: `Kazeros Normal`, parentName: "Kazeros", minIlvl: 1710 },  
   { id: `kazeros-hard`, name: `Kazeros Hard`, parentName: "Kazeros", minIlvl: 1730 }, 
+
+  //Serca Difficulties
+  { id: `serca-normal`, name: `Serca Normal`, parentName: "Serca", minIlvl: 1710 },  
+  { id: `serca-hard`, name: `Serca Hard`, parentName: "Serca", minIlvl: 1730 }, 
+  { id: `serca-nightmare`, name: `Serca Nightmare`, parentName: "Serca", minIlvl: 1740 }, 
 ];

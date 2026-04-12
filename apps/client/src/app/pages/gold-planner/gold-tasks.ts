@@ -313,6 +313,7 @@ export const goldTasks: GoldTask[] = [
           {
             name: "HM",
             HMThreashold: Infinity,
+            NightmareThreashold: 1400,
             goldILvlLimit: Infinity,
             unboundGoldReward: 140,
             boundGoldReward: 560,
@@ -325,6 +326,14 @@ export const goldTasks: GoldTask[] = [
             unboundGoldReward: 0,
             boundGoldReward: 240,
             chestPrice: 75,
+          },
+          {
+            name: 'Nightmare',
+            unboundGoldReward: 21000,
+            boundGoldReward: 0,
+            chestPrice: 6720,
+            HMThreashold: Infinity,
+            goldILvlLimit: Infinity,
           }
         ]
       },
@@ -344,6 +353,7 @@ export const goldTasks: GoldTask[] = [
           {
             name: "HM",
             HMThreashold: Infinity,
+            NightmareThreashold: 1400,
             goldILvlLimit: Infinity,
             unboundGoldReward: 220,
             boundGoldReward: 880,
@@ -356,6 +366,14 @@ export const goldTasks: GoldTask[] = [
             unboundGoldReward: 0,
             boundGoldReward: 360,
             chestPrice: 100,
+          },
+          {
+            name: 'Nightmare',
+            unboundGoldReward: 21000,
+            boundGoldReward: 0,
+            chestPrice: 6720,
+            HMThreashold: Infinity,
+            goldILvlLimit: Infinity,
           }
         ]
       }
@@ -383,6 +401,7 @@ export const goldTasks: GoldTask[] = [
             boundGoldReward: 720,
             chestPrice: 500,
             HMThreashold: Infinity,
+            NightmareThreashold: 1800,
             goldILvlLimit: Infinity
           },
           {
@@ -392,6 +411,14 @@ export const goldTasks: GoldTask[] = [
             chestPrice: 100,
             HMThreashold: Infinity,
             goldILvlLimit: 1600
+          },
+          {
+            name: 'Nightmare',
+            unboundGoldReward: 21000,
+            boundGoldReward: 0,
+            chestPrice: 6720,
+            HMThreashold: Infinity,
+            goldILvlLimit: Infinity,
           }
         ]
       },
@@ -413,6 +440,7 @@ export const goldTasks: GoldTask[] = [
             boundGoldReward: 1200,
             chestPrice: 650,
             HMThreashold: Infinity,
+            NightmareThreashold: 1800,
             goldILvlLimit: Infinity
           },
           {
@@ -422,6 +450,14 @@ export const goldTasks: GoldTask[] = [
             chestPrice: 150,
             HMThreashold: Infinity,
             goldILvlLimit: 1600
+          },
+          {
+            name: 'Nightmare',
+            unboundGoldReward: 21000,
+            boundGoldReward: 0,
+            chestPrice: 6720,
+            HMThreashold: Infinity,
+            goldILvlLimit: Infinity,
           }
         ]
       }
@@ -1150,7 +1186,6 @@ export const goldTasks: GoldTask[] = [
         name: "Aegir Gate 1",
         completionId: "T3.K3.G1",
         modes: [
-          
           {
             name: "NM",
             unboundGoldReward: 3500,
@@ -1197,7 +1232,7 @@ export const goldTasks: GoldTask[] = [
             HMThreashold: Infinity,
             goldILvlLimit: Infinity
           },
-            {
+          {
             name: "Solo",
             unboundGoldReward: 0,
             boundGoldReward: 9800,
@@ -1453,6 +1488,14 @@ export const goldTasks: GoldTask[] = [
             HMThreashold: Infinity,
             goldILvlLimit: Infinity,
           },
+          {
+            name: 'Nightmare',
+            unboundGoldReward: 21000,
+            boundGoldReward: 0,
+            chestPrice: 6720,
+            HMThreashold: Infinity,
+            goldILvlLimit: Infinity,
+          }
         ],
       },
       {
@@ -1472,9 +1515,83 @@ export const goldTasks: GoldTask[] = [
             unboundGoldReward: 35000,
             boundGoldReward: 0,
             chestPrice: 11200,
-            HMThreashold: Infinity,
+            HMThreashold: 1740,
             goldILvlLimit: Infinity,
           },
+          {
+            name: 'Nightmare',
+            unboundGoldReward: 21000,
+            boundGoldReward: 0,
+            chestPrice: 6720,
+            HMThreashold: Infinity,
+            goldILvlLimit: Infinity,
+          }
+        ],
+      }
+    ],
+  },
+
+  // Shadow Raids
+  {
+    name: 'Serca',
+    taskName: 'Serca',
+    gates: [
+      {
+        name: 'Serca Gate 1',
+        completionId: 'T4.SR1.G1',
+        modes: [
+          {
+            name: 'NM',
+            unboundGoldReward: 14000,
+            boundGoldReward: 0,
+            chestPrice: 4480,
+            HMThreashold: 1730,
+            goldILvlLimit: Infinity,
+          },
+          {
+            name: 'HM',
+            unboundGoldReward: 17500,
+            boundGoldReward: 0,
+            chestPrice: 5600,
+            NightmareThreashold: 1740,
+            goldILvlLimit: Infinity,
+          },
+          {
+            name: 'Nightmare',
+            unboundGoldReward: 21000,
+            boundGoldReward: 0,
+            chestPrice: 6720,
+            goldILvlLimit: Infinity,
+          }
+        ],
+      },
+      {
+        name: 'Serca Gate 2',
+        completionId: 'T4.SR1.G2',
+        modes: [
+          {
+            name: 'NM',
+            unboundGoldReward: 21000,
+            boundGoldReward: 0,
+            chestPrice: 6720,
+            HMThreashold: 1730,
+            goldILvlLimit: Infinity,
+          },
+          {
+            name: 'HM',
+            unboundGoldReward: 26500,
+            boundGoldReward: 0,
+            chestPrice: 8480,
+            NightmareThreashold: 1740,
+            goldILvlLimit: Infinity,
+          },
+          {
+            name: 'Nightmare',
+            unboundGoldReward: 33000,
+            boundGoldReward: 0,
+            chestPrice: 10560,
+            goldILvlLimit: Infinity,
+          }
         ],
       }
     ],

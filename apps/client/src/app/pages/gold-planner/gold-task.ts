@@ -5,7 +5,8 @@ export interface Gate {
   chestId?: string;
   modes: {
     name: string,
-    HMThreashold: number,
+    HMThreashold?: number,
+    NightmareThreashold?: number,
     goldILvlLimit: number,
     unboundGoldReward: number,
     boundGoldReward: number,
